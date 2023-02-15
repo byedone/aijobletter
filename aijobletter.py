@@ -1,10 +1,23 @@
 import streamlit as st
 import os
-from dotenv import load_dotenv
 import openai
 
-load_dotenv()  # 读取 .env 文件中的环境变量
 # Read OpenAI API key from environment variable
+
+# Everything is accessible via the st.secrets dict:
+st.write("DB username:", st.secrets["db_username"])
+st.write("DB password:", st.secrets["db_password"])
+st.write("openai", st.secrets["openai"]["OPENAI_API_KEY"])
+
+# And the root-level secrets are also accessible as environment variables:
+
+import os
+
+st.write(
+    "Has environment variables been set:",
+    os.environ["db_username"] == st.secrets["db_username"],
+)
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Define a function to generate job letter
