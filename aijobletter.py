@@ -1,7 +1,9 @@
 import streamlit as st
 import os
+from dotenv import load_dotenv
 import openai
 
+load_dotenv()  # 读取 .env 文件中的环境变量
 # Read OpenAI API key from environment variable
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
