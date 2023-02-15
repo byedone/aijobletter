@@ -3,18 +3,6 @@ import os
 import openai
 
 # Read OpenAI API key from environment variable
-# Everything is accessible via the st.secrets dict:
-st.write("DB username:", st.secrets["db_username"])
-st.write("DB password:", st.secrets["db_password"])
-st.write("openai", st.secrets["openai"]["OPENAI_API_KEY"])
-
-# And the root-level secrets are also accessible as environment variables:
-import os
-
-st.write(
-    "Has environment variables been set:",
-    os.environ["db_username"] == st.secrets["db_username"],
-)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
